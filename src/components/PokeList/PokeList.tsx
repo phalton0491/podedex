@@ -17,7 +17,7 @@ export const PokeList = ({loading, filteredPokemon}: PokeListProps) => {
     <div className={classes.root}>
       {loading && <div>Loading...</div>}
       {filteredPokemon.map((pkmn) => (
-        <div onClick={() => learnMore(pkmn.id, pkmn.name)} className={classes.card} key={pkmn.id} style={{'background' : getBackgroundColorByType(pkmn.types[0])}}>
+        <div data-testid="pokemon-card" onClick={() => learnMore(pkmn.id, pkmn.name)} className={classes.card} key={pkmn.id} style={{'background' : getBackgroundColorByType(pkmn.types[0])}}>
           <div className={classes.imageContainer}>
             <img className={classes.image} src={pkmn.image} />
           </div>
