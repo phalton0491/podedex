@@ -6,6 +6,7 @@ import { Nav, PokeDialog } from '../components';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './client';
 import { ListPage, Home } from '../screens';
+import { SearchProvider } from '../contexts/SearchContext';
 
 function App() {
   const classes = useStyles();
@@ -17,11 +18,13 @@ function App() {
             <Nav />
             <div className={classes.content}>
               <div className={classes.scrollableArea}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/pokemon" element={<ListPage />} />
-                  <Route path="/pokemon/:id/:name" element={<PokeDialog/>} />
-                </Routes>
+                <SearchProvider>                  
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/pokemon" element={<ListPage />} />
+                    <Route path="/pokemon/:id/:name" element={<PokeDialog/>} />
+                  </Routes>
+                </SearchProvider>
               </div>
             </div>
           </BrowserRouter>

@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss';
 import { Pokemon } from '../../hooks/useGetPokemons';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
 import { getBackgroundColorByType, removeZeros } from '../../app/helpers';
 
 interface PokeListProps {
@@ -12,27 +11,24 @@ interface PokeListProps {
 export const PokeList = ({loading, filteredPokemon}: PokeListProps) => {
   const classes = useStyles();
   const navigate = useNavigate();
-
-  const learnMore = (id: string, name:string) => {
-    navigate(`/pokemon/${id}/${name}`);
-  };
+  const learnMore = (id: string, name:string) => navigate(`/pokemon/${id}/${name}`);;
   
   return (
     <div className={classes.root}>
-      {loading && <Typography>Loading...</Typography>}
+      {loading && <div>Loading...</div>}
       {filteredPokemon.map((pkmn) => (
         <div onClick={() => learnMore(pkmn.id, pkmn.name)} className={classes.card} key={pkmn.id} style={{'background' : getBackgroundColorByType(pkmn.types[0])}}>
           <div className={classes.imageContainer}>
             <img className={classes.image} src={pkmn.image} />
           </div>
           <div className={classes.metaDataContainer}>
-            <Typography>#{removeZeros(pkmn.number)}</Typography>
-            <Typography>{pkmn.name}</Typography>
-          <div className={classes.typeList}>
-            {pkmn.types.map(type => <div className={classes.type} key={type}><Typography>{type}</Typography></div>)}
+            <div>#{removeZeros(pkmn.number)}</div>
+            <div>{pkmn.name}</div>
+            <div className={classes.typeList}>
+              {pkmn.types.map(type => <div className={classes.type} key={type}><div>{type}</div></div>)}
+            </div>
           </div>
-          </div>
-          </div>
+        </div>
       ))}
     </div>
   );
@@ -48,8 +44,11 @@ const useStyles = createUseStyles(
       gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '30px',
       padding: '16px',
-      '@media (max-width: 768px)': {
+      '@media (max-width: 1193px)': {
         gridTemplateColumns: 'repeat(2, 1fr)', 
+      },
+      '@media (max-width: 768px)': {
+        gridTemplateColumns: 'repeat(1, 1fr)', 
       }
     },
 
@@ -64,7 +63,6 @@ const useStyles = createUseStyles(
         transform: 'scale(1.03)',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
       },
-      
     },
 
     imageContainer: {
@@ -100,7 +98,6 @@ const useStyles = createUseStyles(
       padding: '5px',
       marginLeft:'15px'
     },
-
 
   },
   { name: 'PokemonList' }

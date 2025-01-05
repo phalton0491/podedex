@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import { useState } from "react";
 
 export const GET_POKEMON = gql`
 query pokemon($id: String, $name: String){

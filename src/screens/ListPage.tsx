@@ -1,15 +1,16 @@
 import { createUseStyles } from 'react-jss';
 import { PokeList, PokeSearch } from '../components';
 import { useGetPokemons } from '../hooks/useGetPokemons';
-import { useGetPokemon } from '../hooks/useGetPokemon';
+import { useSearch } from '../contexts/SearchContext';
 
 export const ListPage = () => {
   const classes = useStyles();
-  const { filteredPokemon, loading, searchPokemonQuery, setSearchPokemonQuery } = useGetPokemons();
+  const { searchQuery, setSearchQuery } = useSearch();
+  const { filteredPokemon, loading } = useGetPokemons(searchQuery);
 
   return (
     <div className={classes.root}>
-      <PokeSearch searchPokemonQuery={searchPokemonQuery} setSearchPokemonQuery={setSearchPokemonQuery}/>
+      <PokeSearch searchPokemonQuery={searchQuery} setSearchPokemonQuery={setSearchQuery}/>
       <PokeList filteredPokemon={filteredPokemon} loading={loading} />
     </div>
   );
