@@ -38,8 +38,6 @@ const useStyles = createUseStyles(
       root: {
         margin: '20px'
       },
-  
-
     },
     { name: 'PokeSearch' }
   );

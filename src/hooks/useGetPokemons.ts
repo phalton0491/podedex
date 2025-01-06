@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+//added number, types, and image for updated graphql query
 export type Pokemon = {
   id: string;
   name: string;
@@ -37,7 +38,7 @@ export const useGetPokemons = (searchQuery: string | undefined) => {
   });
 
   const pokemons: Pokemon[] = useMemo(() => data?.pokemons || [], [data]);
-
+  // filteredPokemon will return an array of pokemon that only are matching by name (.includes for case sesitivity)
   const filteredPokemon: Pokemon[] = useMemo(() => 
     searchQuery ? pokemons.filter((pokemon: Pokemon) => pokemon.name.includes(searchQuery)) : pokemons
   , [searchQuery, data])

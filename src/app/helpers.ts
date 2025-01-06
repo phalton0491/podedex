@@ -8,7 +8,7 @@ export const removeZeros = (pokemonNumber: number) : string => {
     return String(pokemonNumber).replace(/^0+/, '') || '0'
 };
 
-export const getRandomPokemonQuote = () => {
+export const getRandomPokemonQuote = (): string => {
     const randomQuote = pokemonQuotes[Math.floor(Math.random() * pokemonQuotes.length)];
     return randomQuote;
 };

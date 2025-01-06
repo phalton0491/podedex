@@ -11,7 +11,7 @@ interface PokeListProps {
 export const PokeList = ({loading, filteredPokemon}: PokeListProps) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const learnMore = (id: string, name:string) => navigate(`/pokemon/${id}/${name}`);;
+  const learnMore = (id: string, name: string) => navigate(`/pokemon/${id}/${name}`);;
   
   return (
     <div className={classes.root}>

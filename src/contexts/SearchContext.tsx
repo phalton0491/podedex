@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
+// I would have put all pokemon data into context but did not want to bloat the code with extra getters and setters
+// I felt for this task it would be better to keep the data as is
+// Furthermore, I used this simple context state to persist the search query when navigating to other parts of the application
 interface SearchContextType {
   searchQuery: string;
   setSearchQuery: Dispatch<SetStateAction<string>>;

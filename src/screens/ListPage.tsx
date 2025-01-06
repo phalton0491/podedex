@@ -5,7 +5,7 @@ import { useSearch } from '../contexts/SearchContext';
 
 export const ListPage = () => {
   const classes = useStyles();
-  const { searchQuery, setSearchQuery } = useSearch();
+  const { searchQuery, setSearchQuery } = useSearch(); // persisting search query data
   const { filteredPokemon, loading } = useGetPokemons(searchQuery);
 
   return (
