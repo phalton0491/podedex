@@ -1,4 +1,3 @@
-import { FormControl, TextField } from "@mui/material"
 import { createUseStyles } from 'react-jss';
 
 interface PokeSearchProps  {
@@ -14,21 +13,12 @@ export const PokeSearch = ({searchPokemonQuery, setSearchPokemonQuery}: PokeSear
     }
     return (
         <div className={classes.root}>
-            <FormControl sx={{ width: '100%' }}>
-
-            <TextField
+            <input
+                className={classes.input}
                 placeholder={'Search Pokemon'}
                 onChange={(e) => handleChange(e.target.value)}
                 value={searchPokemonQuery ?? ''}
-                sx={{
-                    input: { color: '#FFF'},
-                    '& .MuiOutlinedInput-root': { 
-                        width: '100%', backgroundColor: '#4f5f7e',
-                        '& .MuiInputBase-input::placeholder': { color: '#FFF' },
-                    },
-                  }}
             />
-            </FormControl>
         </div>
     )
 }
@@ -36,7 +26,21 @@ export const PokeSearch = ({searchPokemonQuery, setSearchPokemonQuery}: PokeSear
 const useStyles = createUseStyles(
     {
       root: {
-        margin: '20px'
+        margin: '20px',
+        display: 'flex',
+        justifyContent: 'center'
+      },
+      input: {
+        width: '50%',
+        height: '50px',
+        borderRadius: '10px',
+        fontSize: '17px',
+        color: '#4B5066',
+        paddingLeft: '10px',
+        '&::placeholder': {
+            color: '#4B5066 ', 
+            fontSize: '17px',
+          }
       },
     },
     { name: 'PokeSearch' }
